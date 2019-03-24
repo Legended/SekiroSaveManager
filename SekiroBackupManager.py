@@ -12,7 +12,7 @@ def detect():
             break
 
 def run_script():
-    print('Running Script. ALT+F5 to save. ALT+F6 to load.')
+    print('Running Script. Press F5 to save. Press F6 to restore.')
 
     try:
         sekiro = getenv('APPDATA') + '\\Sekiro'
