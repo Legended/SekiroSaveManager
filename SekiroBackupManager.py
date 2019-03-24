@@ -31,26 +31,26 @@ def run_script():
     app_window = FindWindow(None, app_name)
 
 
-    combo = {keyboard.Key.alt_l, keyboard.Key.f5}
+    save_hotkey = {keyboard.Key.f5}
     save = set()
 
-    combo2 = {keyboard.Key.alt_l, keyboard.Key.f6}
+    load_hotkey = {keyboard.Key.f6}
     load = set()
 
     def on_press(key):
 
-        if key in combo:
+        if key in save_hotkey:
             save.add(key)
-            if all(k in save for k in combo):
+            if all(k in save for k in save_hotkey):
                 try:
                     copyfile(getcwd() + '\\' + savefile, getcwd() + '\\backup\\' + savefile)
                     print('[' + str(datetime.now()) + ']' + ' Backup created.')
                 except FileNotFoundError as backup_error:
                     print(backup_error)
 
-        if key in combo2:
+        if key in load_hotkey:
             load.add(key)
-            if all(k in load for k in combo2):
+            if all(k in load for k in load_hotkey):
                 try:
                     copyfile(getcwd() + '\\backup\\' + savefile, getcwd() + '\\' + savefile)
                     print('[' + str(datetime.now()) + ']' + ' Restored backup.')
